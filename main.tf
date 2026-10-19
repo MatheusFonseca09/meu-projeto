@@ -6,7 +6,7 @@ terraform {
     }
   }
 }
-
+#First test pipeline
 provider "docker" {}
 
 resource "docker_image" "nginx" {
