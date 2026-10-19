@@ -37,3 +37,11 @@ jobs:
         run: |
           sleep 5
           docker ps
+
+      - name: Teste de dado no banco
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          sleep 10
+          docker exec meu-container-db psql -U postgres -c "CREATE TABLE IF NOT EXISTS mensagens (id SERIAL PRIMARY KEY, texto TEXT);"
+          docker exec meu-container-db psql -U postgres -c "SELECT count(*) FROM mensagens;"
+          docker exec meu-container-db psql -U postgres -c "INSERT INTO mensagens (texto) VALUES ('dado do pipeline');"
