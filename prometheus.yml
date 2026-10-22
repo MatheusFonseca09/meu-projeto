@@ -5,3 +5,4 @@ scrape_configs:
   - job_name: 'cadvisor'
     static_configs:
       - targets: ['cadvisor:8080']
+      #cAdvisor é um serviço que coleta de métricas de containers, como uso de CPU, memória e rede. Ele expõe essas métricas em uma porta específica (8080 neste caso), que o Prometheus pode acessar para coletar os dados.
